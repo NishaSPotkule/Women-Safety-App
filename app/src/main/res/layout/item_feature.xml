@@ -1,0 +1,27 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/rounded_corner">
+
+
+    <ImageView
+        android:id="@+id/featureIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/settings" />
+
+    <TextView
+        android:id="@+id/featureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feature"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

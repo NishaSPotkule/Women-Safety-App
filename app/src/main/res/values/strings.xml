@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Nariguard</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="feature_icon">Feature Icon</string>
+    <string name="feature">Feature</string>
+    <string name="sos">SOS</string>
+    <string name="sos_emergency_button">SOS Emergency Button</string>
+    <string name="complaint_system">Complaint System</string>
+    <string name="welcome">Welcome 👋</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+</resources>

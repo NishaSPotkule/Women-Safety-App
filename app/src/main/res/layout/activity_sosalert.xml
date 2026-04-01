@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A0000">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ALERTING CONTACTS and AUTHORITIES"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
+
+    <!-- SOS CIRCLE -->
+    <TextView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:text="SOS"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:background="@drawable/sos_circle_red"
+        android:layout_centerInParent="true"/>
+
+    <!-- Cancel Button -->
+    <TextView
+        android:id="@+id/btnCancelSOS"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Cancel"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:background="#444444"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="24dp"/>
+</RelativeLayout>

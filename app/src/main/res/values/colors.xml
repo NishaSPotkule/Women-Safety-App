@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#C52BEA</color>
+    <color name="colorPrimaryDark">#A11AC8</color>
+    <color name="colorAccent">#C52BEA</color>
+
+    <!-- Common Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey">#787474</color>
+
+        <color name="lightPink">#FFE4E1</color>  <!-- Light pink for ScrollView background -->
+          <!-- For main texts and EditTexts -->
+        <color name="gray">#808080</color>       <!-- For 'Member since' text -->
+        <color name="taglineColor">#C0C0C0</color> <!-- Replace invalid @color/#c -->
+
+        <!-- Accent / Buttons -->
+        <color name="pinkGradient">#FF69B4</color> <!-- Gradient pink for buttons and strokes -->
+
+
+
+    <!-- Splash Screen Colors -->
+    <color name="splash_text">#FFFFFF</color>
+    <color name="splashBackground">#C52BEA</color>
+
+</resources>

@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:background="@drawable/bg_splash"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Start Live Location"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:backgroundTint="#5DF013"
+
+        app:cornerRadius="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Stop Live Location"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:backgroundTint="#E91E3C"
+        app:cornerRadius="16dp"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

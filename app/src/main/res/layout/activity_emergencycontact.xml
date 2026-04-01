@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/emergencyContactLayout"
+    tools:context=".EmergencycontactActivity">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewContacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:clipToPadding="false" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Add Contact"
+        android:src="@drawable/add"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@null"
+        app:layout_anchor="@id/recyclerViewContacts"
+        android:background="@drawable/floating_btn_bg" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

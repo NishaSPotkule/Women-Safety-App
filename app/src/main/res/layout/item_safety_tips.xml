@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:elevation="8dp">
+
+    <TextView
+        android:id="@+id/tvTopicTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Topic Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@drawable/gradient_header" />
+
+    <!-- Divider Line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D1C4E9" />
+
+    <!-- Tips Container -->
+    <LinearLayout
+        android:id="@+id/layoutTips"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:divider="?android:attr/dividerVertical"
+        android:showDividers="middle">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/tips"
+                android:layout_marginEnd="12dp"
+                app:tint="#C52BEA" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="This is a safety tip."
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

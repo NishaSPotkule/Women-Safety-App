@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- PROFILE -->
+        <LinearLayout
+            android:id="@+id/layoutProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings_card"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:src="@drawable/profile"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <LinearLayout
+                android:layout_marginStart="16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Profile"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="View your personal details"
+                    android:textSize="12sp"
+                    android:textColor="#666"/>
+            </LinearLayout>
+
+            <ImageView
+                android:src="@drawable/arrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+
+        <!-- EMERGENCY CONTACTS -->
+        <LinearLayout
+            android:id="@+id/layoutEmergency"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings_card"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+
+                android:src="@drawable/contact"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <LinearLayout
+                android:layout_marginStart="16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Emergency Contacts"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Manage trusted contacts"
+                    android:textSize="12sp"
+                    android:textColor="#666"/>
+            </LinearLayout>
+
+            <ImageView
+                android:src="@drawable/arrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+
+        <!-- ABOUT -->
+        <LinearLayout
+            android:id="@+id/layoutAbout"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings_card"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:src="@drawable/about"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <LinearLayout
+                android:layout_marginStart="16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="About"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="App version and details"
+                    android:textSize="12sp"
+                    android:textColor="#666"/>
+            </LinearLayout>
+
+            <ImageView
+
+                android:src="@drawable/arrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+
+        <!-- DARK MODE -->
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings_card"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:src="@drawable/darkmode"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <TextView
+                android:layout_marginStart="16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dark Mode"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Switch
+                android:id="@+id/switchDarkMode"
+                tools:ignore="UseSwitchCompatOrMaterialXml"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutLogout"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings_card"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:src="@drawable/logout"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <TextView
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#E53935"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

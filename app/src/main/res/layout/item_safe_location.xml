@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="#F2F2F2"
+    android:layout_margin="6dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- ICON -->
+    <ImageView
+        android:id="@+id/imgType"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="Location Type"/>
+
+    <!-- TEXT CONTENT -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvPlaceName"
+            android:text="Place Name"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvDistance"
+            android:text="Distance: 0.8 km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNavigate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Navigate"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:backgroundTint="#20EF28"
+        app:cornerRadius="16dp"
+        android:layout_marginTop="16dp"/>
+
+
+</LinearLayout>
