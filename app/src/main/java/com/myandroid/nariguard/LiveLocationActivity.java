@@ -54,7 +54,7 @@ public class LiveLocationActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
-    // 🔴 THIS WAS MISSING (MOST IMPORTANT)
+
     @Override
     public void onRequestPermissionsResult(
             int requestCode,

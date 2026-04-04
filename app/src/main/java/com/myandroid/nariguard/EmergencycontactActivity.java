@@ -24,6 +24,10 @@ public class EmergencycontactActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private String userId;
 
+    // 🔥 CONSTANTS (BEST PRACTICE)
+    private static final String USERS = "users";
+    private static final String CONTACTS = "emergency_contacts";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +48,6 @@ public class EmergencycontactActivity extends AppCompatActivity {
 
         contactList = new ArrayList<>();
 
-        // Updated Adapter to support edit & delete
         adapter = new ContactAdapter(this, contactList, new ContactAdapter.OnContactActionListener() {
             @Override
             public void onDelete(Contact contact) {
@@ -53,7 +56,6 @@ public class EmergencycontactActivity extends AppCompatActivity {
 
             @Override
             public void onEdit(Contact contact) {
-                // Open dialog with existing contact
                 AddContactDialogue dialog = new AddContactDialogue(contact);
                 dialog.show(getSupportFragmentManager(), "EditContactDialog");
             }
@@ -65,39 +67,41 @@ public class EmergencycontactActivity extends AppCompatActivity {
         loadContacts();
 
         fabAddContact.setOnClickListener(v -> {
-            // Open dialog for adding new contact
             AddContactDialogue dialog = new AddContactDialogue();
             dialog.show(getSupportFragmentManager(), "AddContactDialog");
         });
     }
 
-    // Make this public so dialog can refresh
+
     public void loadContacts() {
-        firestore.collection("users")
+        firestore.collection(USERS)
                 .document(userId)
-                .collection("emergency_contacts")
+                .collection(CONTACTS)
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
                     contactList.clear();
+
                     for (var doc : querySnapshot.getDocuments()) {
                         Contact contact = doc.toObject(Contact.class);
                         if (contact != null) {
-                            contact.setId(doc.getId()); // Store document ID for edit/delete
+                            contact.setId(doc.getId());
                             contactList.add(contact);
                         }
                     }
+
                     adapter.notifyDataSetChanged();
                 })
                 .addOnFailureListener(e ->
-                        Toast.makeText(this, "Failed to load contacts", Toast.LENGTH_SHORT).show());
+                        Toast.makeText(this, "Failed to load contacts: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
+
 
     private void deleteContact(Contact contact) {
         if (contact.getId() == null) return;
 
-        firestore.collection("Users")
+        firestore.collection(USERS)
                 .document(userId)
-                .collection("EmergencyContacts")
+                .collection(CONTACTS)
                 .document(contact.getId())
                 .delete()
                 .addOnSuccessListener(unused -> {
@@ -105,6 +109,6 @@ public class EmergencycontactActivity extends AppCompatActivity {
                     loadContacts();
                 })
                 .addOnFailureListener(e ->
-                        Toast.makeText(this, "Failed to delete contact", Toast.LENGTH_SHORT).show());
+                        Toast.makeText(this, "Failed to delete: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 }

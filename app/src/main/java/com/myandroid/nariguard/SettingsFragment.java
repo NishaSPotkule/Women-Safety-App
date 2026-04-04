@@ -35,32 +35,30 @@ public class SettingsFragment extends Fragment {
         layoutLogout = view.findViewById(R.id.layoutLogout);
         switchDarkMode = view.findViewById(R.id.switchDarkMode);
 
-        // ---- SET SWITCH STATE SAFELY ----
+
         switchDarkMode.setOnCheckedChangeListener(null);
         int nightMode = AppCompatDelegate.getDefaultNightMode();
         switchDarkMode.setChecked(nightMode == AppCompatDelegate.MODE_NIGHT_YES);
 
-        // ---- DARK MODE LISTENER ----
+
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
             int newMode = isChecked
                     ? AppCompatDelegate.MODE_NIGHT_YES
                     : AppCompatDelegate.MODE_NIGHT_NO;
 
             if (AppCompatDelegate.getDefaultNightMode() != newMode) {
+
                 AppCompatDelegate.setDefaultNightMode(newMode);
 
-                // Safe restart of activity to apply theme
+                // ✅ SAFEST WAY
                 if (getActivity() != null) {
-                    Intent intent = getActivity().getIntent();
-                    getActivity().finish();
-                    getActivity().overridePendingTransition(0,0); // no animation
-                    startActivity(intent);
-                    getActivity().overridePendingTransition(0,0);
+                    getActivity().recreate();  // 🔥 no crash, clean restart
                 }
             }
         });
 
-        // ---- PROFILE ----
+
         layoutProfile.setOnClickListener(v ->
                 startActivity(new Intent(getActivity(), ProfileActivity.class))
         );
