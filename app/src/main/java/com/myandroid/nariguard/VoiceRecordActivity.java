@@ -63,11 +63,8 @@ public class VoiceRecordActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Folder for recordings
-        recordsFolder = new File(
-                getExternalFilesDir(Environment.DIRECTORY_MUSIC),
-                "VoiceRecords"
-        );
+
+                recordsFolder = new File(getFilesDir(), "VoiceRecords");
 
         if (!recordsFolder.exists()) {
             recordsFolder.mkdirs();

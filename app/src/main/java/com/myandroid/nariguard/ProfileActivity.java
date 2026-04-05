@@ -23,7 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        // ✅ Initialize Views (TextView now, not EditText)
+
         nameField = findViewById(R.id.nameField);
         phoneField = findViewById(R.id.phoneField);
         emailField = findViewById(R.id.emailField);
@@ -39,9 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    // ===============================
-    // LOAD USER DATA FROM FIRESTORE
-    // ===============================
+
     private void loadUserData() {
 
         db.collection("users")

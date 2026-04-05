@@ -24,14 +24,15 @@ public class SplashActivity extends AppCompatActivity {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
             Intent intent;
+
             if (currentUser != null) {
-                // ✅ AUTO LOGIN
+                android.util.Log.d("AUTH_DEBUG", "User exists: " + currentUser.getEmail());
                 intent = new Intent(SplashActivity.this, MainActivity.class);
             } else {
+                android.util.Log.d("AUTH_DEBUG", "User is NULL");
                 intent = new Intent(SplashActivity.this, LoginActivity.class);
             }
 
-            // 🔥 CLEAR BACK STACK
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

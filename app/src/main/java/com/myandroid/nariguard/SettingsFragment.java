@@ -51,9 +51,9 @@ public class SettingsFragment extends Fragment {
 
                 AppCompatDelegate.setDefaultNightMode(newMode);
 
-                // ✅ SAFEST WAY
+
                 if (getActivity() != null) {
-                    getActivity().recreate();  // 🔥 no crash, clean restart
+                    getActivity().recreate();
                 }
             }
         });
@@ -63,17 +63,16 @@ public class SettingsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), ProfileActivity.class))
         );
 
-        // ---- EMERGENCY ----
         layoutEmergency.setOnClickListener(v ->
                 startActivity(new Intent(getActivity(), EmergencycontactActivity.class))
         );
 
-        // ---- ABOUT ----
+
         layoutAbout.setOnClickListener(v ->
                 startActivity(new Intent(getActivity(), AboutActivity.class))
         );
 
-        // ---- LOGOUT ----
+
         layoutLogout.setOnClickListener(v -> showLogoutDialog());
 
         return view;

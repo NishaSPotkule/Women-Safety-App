@@ -30,17 +30,14 @@ public class LoginActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
-        // Initialize EditTexts
         emailEt = findViewById(R.id.email);
         passEt = findViewById(R.id.password);
 
-        // Initialize Buttons and TextViews
+
         loginBtn = findViewById(R.id.loginbtn);
         signupText = findViewById(R.id.signup);
         forgotPassword = findViewById(R.id.forgotPassword);
 
-        // Click listeners
         loginBtn.setOnClickListener(v -> loginUser());
 
         signupText.setOnClickListener(v ->

@@ -1,6 +1,7 @@
 package com.myandroid.nariguard;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -60,21 +61,37 @@ public class HomeFragment extends Fragment {
 
     // ================= SHARE LOCATION (One-time) =================
     private void shareLocation() {
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        Context context = getContext();
+        if (context == null) return;
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 202);
             return;
         }
 
+        if (locationClient == null) {
+            locationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+        }
+
         CancellationTokenSource cts = new CancellationTokenSource();
+
         locationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, cts.getToken())
                 .addOnSuccessListener(location -> {
                     if (location != null) {
                         String link = "https://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude();
+
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
                         intent.putExtra(Intent.EXTRA_TEXT, "📍 My Current Location:\n" + link);
+
                         startActivity(Intent.createChooser(intent, "Share via"));
+                    } else {
+                        Toast.makeText(context, "Location is null", Toast.LENGTH_SHORT).show();
                     }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(context, "Failed to get location", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 });
     }
 

@@ -46,11 +46,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         FirebaseUser user = auth.getCurrentUser();
+
         if (user == null) {
-            startActivity(new Intent(this, LoginActivity.class));
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
             finish();
             return;
         }
+
+
+        loadUserName(user.getUid());
 
 
         checkDefaultSmsApp();
@@ -148,7 +155,15 @@ public class MainActivity extends AppCompatActivity {
                         myPackage
                 );
 
-                startActivity(intent);
+                SharedPreferences prefs = getSharedPreferences("app", MODE_PRIVATE);
+                boolean asked = prefs.getBoolean("sms_default_asked", false);
+
+                if (!asked) {
+
+                    startActivity(intent);
+
+                    prefs.edit().putBoolean("sms_default_asked", true).apply();
+                }
             }
         }
     }
