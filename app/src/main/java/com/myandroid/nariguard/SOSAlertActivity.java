@@ -20,7 +20,6 @@ public class SOSAlertActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_sosalert);
 
-        // Start SOS automatically
         startSOS();
 
         findViewById(R.id.btnCancelSOS)

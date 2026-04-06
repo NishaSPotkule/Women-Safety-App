@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment {
     private FusedLocationProviderClient locationClient;
     private FirebaseFirestore firestore;
     private FirebaseAuth auth;
+    private Location currentLocation;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +41,8 @@ public class HomeFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        // UI Bindings
+        fetchCurrentLocation();
+
         TextView btnSos = view.findViewById(R.id.btnSos);
         LinearLayout shareLocationLayout = view.findViewById(R.id.shareLocationLayout);
         LinearLayout emergencyContacts = view.findViewById(R.id.emergencyContactLayout);
@@ -48,18 +50,49 @@ public class HomeFragment extends Fragment {
         LinearLayout voiceRecordLayout = view.findViewById(R.id.voiceRecordLayout);
         LinearLayout safetyTipsLayout = view.findViewById(R.id.safetyTipsLayout);
 
-        // Click Listeners
         btnSos.setOnClickListener(v -> startSOS());
         shareLocationLayout.setOnClickListener(v -> shareLocation());
         emergencyContacts.setOnClickListener(v -> startActivity(new Intent(getActivity(), EmergencycontactActivity.class)));
-        safeLocationsLayout.setOnClickListener(v -> startActivity(new Intent(getActivity(), SafeLocationsActivity.class)));
+
         voiceRecordLayout.setOnClickListener(v -> startActivity(new Intent(getActivity(), VoiceRecordActivity.class)));
         safetyTipsLayout.setOnClickListener(v -> startActivity(new Intent(getActivity(), SafetyTipsActivity.class)));
+
+        // ✅ FIXED SafeLocations click
+        safeLocationsLayout.setOnClickListener(v -> {
+
+            if (currentLocation != null) {
+
+                Intent intent = new Intent(getActivity(), SafeLocationsActivity.class);
+                intent.putExtra("lat", currentLocation.getLatitude());
+                intent.putExtra("lon", currentLocation.getLongitude());
+
+                startActivity(intent);
+
+            } else {
+                Toast.makeText(getActivity(), "Fetching location... Please wait", Toast.LENGTH_SHORT).show();
+                fetchCurrentLocation(); // retry
+            }
+        });
 
         return view;
     }
 
-    // ================= SHARE LOCATION (One-time) =================
+    // ✅ NEW METHOD (only addition)
+    private void fetchCurrentLocation() {
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 300);
+            return;
+        }
+
+        locationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, null)
+                .addOnSuccessListener(location -> {
+                    if (location != null) {
+                        currentLocation = location;
+                    }
+                });
+    }
+
     private void shareLocation() {
         Context context = getContext();
         if (context == null) return;
@@ -95,15 +128,13 @@ public class HomeFragment extends Fragment {
                 });
     }
 
-    // ================= SOS LOGIC (The 5-Minute Tracker) =================
     private void startSOS() {
-        // 1. Check Fine Location Permission
+
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 101);
             return;
         }
 
-        // 2. Check Background Location Permission (For Android 11+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(getContext(), "Please set location to 'Allow all the time' for continuous tracking", Toast.LENGTH_LONG).show();
@@ -112,22 +143,14 @@ public class HomeFragment extends Fragment {
             }
         }
 
-        // 3. Get current location to send immediate SMS
         locationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, null)
                 .addOnSuccessListener(location -> {
                     if (location != null) {
                         sendSOSViaSmsApp(location);
 
-                        // 4. Start the Live Service (5-minute updates)
-                        Intent serviceIntent = new Intent(requireContext(), LiveLocationService.class);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            requireContext().startForegroundService(serviceIntent);
-                        } else {
-                            requireContext().startService(serviceIntent);
-                        }
-
-                        // 5. Open Alert Screen
-                        startActivity(new Intent(requireContext(), SOSAlertActivity.class));
+                        new android.os.Handler().postDelayed(() -> {
+                            startActivity(new Intent(requireContext(), SOSAlertActivity.class));
+                        }, 2000);
                     } else {
                         Toast.makeText(getContext(), "Error: Location not found. Enable GPS.", Toast.LENGTH_SHORT).show();
                     }
@@ -135,41 +158,76 @@ public class HomeFragment extends Fragment {
     }
 
     private void sendSOSViaSmsApp(Location location) {
+
         if (auth.getUid() == null) return;
 
-        firestore.collection("users").document(auth.getUid()).collection("emergency_contacts").get()
+        firestore.collection("users")
+                .document(auth.getUid())
+                .collection("emergency_contacts")
+                .get()
                 .addOnSuccessListener(query -> {
-                    if (query.isEmpty()) return;
 
-                    StringBuilder numbers = new StringBuilder();
+                    if (query.isEmpty()) {
+                        Toast.makeText(getContext(), "No emergency contacts found", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    String firstNumber = null;
+
                     for (QueryDocumentSnapshot doc : query) {
                         String phone = doc.getString("phone");
+
                         if (phone != null) {
-                            if (numbers.length() > 0) numbers.append(";");
-                            numbers.append(phone);
+                            phone = phone.replaceAll("\\s+", "");
+                            if (!phone.isEmpty()) {
+                                firstNumber = phone;
+                                break;
+                            }
                         }
                     }
 
-                    String msg = "🚨 SOS ALERT!\n📍 My Live Location:\nhttps://maps.google.com/?q=" +
-                            location.getLatitude() + "," + location.getLongitude();
+                    if (firstNumber == null) {
+                        Toast.makeText(getContext(), "No valid contact found", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-                    Intent intent = new Intent(Intent.ACTION_SENDTO);
-                    intent.setData(android.net.Uri.parse("smsto:" + numbers.toString()));
-                    intent.putExtra("sms_body", msg);
-                    startActivity(intent);
-                });
+                    String msg = "🚨 SOS ALERT!\n📍 My Live Location:\nhttps://maps.google.com/?q="
+                            + location.getLatitude() + "," + location.getLongitude();
+
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_SENDTO);
+                        intent.setData(android.net.Uri.parse("smsto:" + firstNumber));
+                        intent.putExtra("sms_body", msg);
+
+                        startActivity(intent);
+
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), "Unable to open SMS app", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(getContext(), "Failed to load contacts", Toast.LENGTH_SHORT).show()
+                );
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
             if (requestCode == 101 || requestCode == 103) {
-                startSOS(); // Restart the process once permission is granted
+                startSOS();
             } else if (requestCode == 202) {
                 shareLocation();
             }
+            // ✅ NEW CASE (SafeLocations)
+            else if (requestCode == 300) {
+                fetchCurrentLocation();
+            }
+
         } else {
             Toast.makeText(getContext(), "Permission required for SOS features", Toast.LENGTH_SHORT).show();
         }

@@ -39,16 +39,19 @@ public class SafeLocationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_safe_locations);
 
         recyclerView = findViewById(R.id.rvSafeLocations);
-
+        progressBar=findViewById(R.id.progressBar);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // ✅ Get real GPS location from Intent
-        userLat = getIntent().getDoubleExtra("lat", 0);
-        userLon = getIntent().getDoubleExtra("lon", 0);
 
-        if (userLat == 0 || userLon == 0) {
-            Toast.makeText(this, "Location unavailable", Toast.LENGTH_SHORT).show();
+        userLat = getIntent().getDoubleExtra("lat", -1);
+        userLon = getIntent().getDoubleExtra("lon", -1);
+
+        Log.d("LOCATION_DEBUG", "Lat: " + userLat + " Lon: " + userLon);
+
+
+        if (userLat == -1 || userLon == -1) {
+            Toast.makeText(this, "Location unavailable. Please try again.", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -83,13 +86,11 @@ public class SafeLocationsActivity extends AppCompatActivity {
                             "node[amenity=hospital](around:" + radius + "," + lat + "," + lon + ");" +
                             ");out;";
 
-                    String urlStr =
-                            "https://overpass-api.de/api/interpreter?data=" +
-                                    URLEncoder.encode(query, "UTF-8");
+                    String urlStr = "https://overpass-api.de/api/interpreter?data=" +
+                            URLEncoder.encode(query, "UTF-8");
 
                     URL url = new URL(urlStr);
-                    HttpURLConnection conn =
-                            (HttpURLConnection) url.openConnection();
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
                     conn.setRequestMethod("GET");
                     conn.setConnectTimeout(15000);
@@ -101,9 +102,8 @@ public class SafeLocationsActivity extends AppCompatActivity {
                         throw new Exception("API Error: " + responseCode);
                     }
 
-                    BufferedReader reader =
-                            new BufferedReader(
-                                    new InputStreamReader(conn.getInputStream()));
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(conn.getInputStream()));
 
                     StringBuilder response = new StringBuilder();
                     String line;
@@ -111,6 +111,8 @@ public class SafeLocationsActivity extends AppCompatActivity {
                     while ((line = reader.readLine()) != null) {
                         response.append(line);
                     }
+
+                    reader.close();
 
                     Log.d("SafeLocationAPI", response.toString());
 
@@ -143,7 +145,8 @@ public class SafeLocationsActivity extends AppCompatActivity {
                         Location.distanceBetween(
                                 lat, lon,
                                 placeLat, placeLon,
-                                result);
+                                result
+                        );
 
                         double distanceKm = result[0] / 1000.0;
 
@@ -152,7 +155,8 @@ public class SafeLocationsActivity extends AppCompatActivity {
                                 placeLat,
                                 placeLon,
                                 distanceKm,
-                                type));
+                                type
+                        ));
                     }
 
                     if (elements.length() > 0)
@@ -168,9 +172,11 @@ public class SafeLocationsActivity extends AppCompatActivity {
                             Toast.makeText(this,
                                     "Failed to fetch safe locations",
                                     Toast.LENGTH_SHORT).show());
+
                     return;
                 }
             }
+
 
             Collections.sort(tempList,
                     (a, b) -> Double.compare(a.distance, b.distance));
@@ -183,6 +189,7 @@ public class SafeLocationsActivity extends AppCompatActivity {
 
                 safeLocations.clear();
                 safeLocations.addAll(tempList);
+
                 adapter.notifyDataSetChanged();
             });
 

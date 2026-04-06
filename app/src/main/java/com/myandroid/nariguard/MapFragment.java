@@ -95,7 +95,7 @@ public class MapFragment extends Fragment {
             }
         });
 
-        // ✅ My Location Button
+
         ImageButton btnMyLocation = view.findViewById(R.id.btnMyLocation);
         btnMyLocation.setOnClickListener(v -> {
             GeoPoint myPoint = myLocationOverlay.getMyLocation();
@@ -105,7 +105,7 @@ public class MapFragment extends Fragment {
                 Toast.makeText(getActivity(),"Getting location...",Toast.LENGTH_SHORT).show();
         });
 
-        // ✅ Permissions
+
         ActivityCompat.requestPermissions(
                 requireActivity(),
                 new String[]{
@@ -116,7 +116,7 @@ public class MapFragment extends Fragment {
         return view;
     }
 
-    // ================= SEARCH =================
+
 
     private void searchLocation() {
 
@@ -146,11 +146,10 @@ public class MapFragment extends Fragment {
 
                     requireActivity().runOnUiThread(() -> {
 
-                        // remove old markers/routes
+
                         mapView.getOverlays().removeIf(o ->
                                 o instanceof Marker || o instanceof Polyline);
 
-                        // marker
                         Marker marker = new Marker(mapView);
                         marker.setPosition(destination);
                         marker.setTitle(locationName);
@@ -158,7 +157,7 @@ public class MapFragment extends Fragment {
 
                         mapController.animateTo(destination);
 
-                        // draw route
+
                         GeoPoint start = myLocationOverlay.getMyLocation();
                         if(start != null)
                             drawRoute(start, destination);
@@ -171,7 +170,7 @@ public class MapFragment extends Fragment {
         }).start();
     }
 
-    // ================= LIVE SEARCH =================
+
 
     private void searchLocationLive(String query) {
 
@@ -198,7 +197,7 @@ public class MapFragment extends Fragment {
         }).start();
     }
 
-    // ================= ROUTE DRAWING =================
+
 
     private void drawRoute(GeoPoint start, GeoPoint end) {
 

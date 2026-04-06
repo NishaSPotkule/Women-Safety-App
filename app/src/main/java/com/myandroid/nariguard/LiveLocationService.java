@@ -35,22 +35,22 @@ public class LiveLocationService extends Service {
         super.onCreate();
 
         locationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        // 1. Create the channel first
         createNotificationChannel();
 
-        // 2. Start foreground immediately to prevent Android 14 crashes
         startForeground(NOTIFICATION_ID, getNotification());
 
-        // 3. Start requesting location
+
         startLocationUpdates();
     }
 
     private void startLocationUpdates() {
-        // Updated for Play Services 21.0.1
-        LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5 * 60 * 1000)
-                .setMinUpdateIntervalMillis(2 * 60 * 1000)
-                .setWaitForAccurateLocation(false)
+
+        LocationRequest request = new LocationRequest.Builder(
+                Priority.PRIORITY_HIGH_ACCURACY,
+                5000
+        )
+                .setMinUpdateIntervalMillis(3000)
+                .setWaitForAccurateLocation(true)
                 .build();
 
         locationCallback = new LocationCallback() {
@@ -66,7 +66,7 @@ public class LiveLocationService extends Service {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationClient.requestLocationUpdates(request, locationCallback, Looper.getMainLooper());
         } else {
-            stopSelf(); // Stop service if permission is missing
+            stopSelf();
         }
     }
 
@@ -86,7 +86,7 @@ public class LiveLocationService extends Service {
     }
 
     private Notification getNotification() {
-        // Fixed the broken string error here
+
         return new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("NariGuard SOS Active")
                 .setContentText("Sharing live location with emergency contacts...")
@@ -101,7 +101,7 @@ public class LiveLocationService extends Service {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
                     "SOS Live Location",
-                    NotificationManager.IMPORTANCE_HIGH // High importance for SOS
+                    NotificationManager.IMPORTANCE_HIGH
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
             if (manager != null) {
@@ -112,7 +112,7 @@ public class LiveLocationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_STICKY; // Keeps service running if killed by system
+        return START_STICKY;
     }
 
     @Override
