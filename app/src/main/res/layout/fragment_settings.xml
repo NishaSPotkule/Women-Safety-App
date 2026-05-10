@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F6F6">
+    android:background="#090204"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
-        <!-- PROFILE -->
+
         <LinearLayout
             android:id="@+id/layoutProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/settings_card"
+            android:background="@drawable/settings_dark_card"
             android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:src="@drawable/profile"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+            android:padding="18dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
 
             <LinearLayout
-                android:layout_marginStart="16dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:background="@drawable/icon_pink_bg">
+
+                <ImageView
+                    android:src="@drawable/profile"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:tint="#FF4D6D" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="18dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -37,42 +48,52 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Profile"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFE7EA" />
 
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="View your personal details"
-                    android:textSize="12sp"
-                    android:textColor="#666"/>
+                    android:textSize="13sp"
+                    android:textColor="#A99DA2"
+                    android:layout_marginTop="4dp" />
             </LinearLayout>
 
             <ImageView
                 android:src="@drawable/arrow"
-                android:layout_width="20dp"
-                android:layout_height="20dp"/>
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                app:tint="#C9B5BA" />
         </LinearLayout>
 
         <!-- EMERGENCY CONTACTS -->
         <LinearLayout
             android:id="@+id/layoutEmergency"
-            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/settings_card"
+            android:background="@drawable/settings_dark_card"
             android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-
-                android:src="@drawable/contact"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+            android:padding="18dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
 
             <LinearLayout
-                android:layout_marginStart="16dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:background="@drawable/icon_purple_bg">
+
+                <ImageView
+                    android:src="@drawable/contact"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:tint="#8D7BFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="18dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -82,41 +103,52 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Emergency Contacts"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFE7EA" />
 
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Manage trusted contacts"
-                    android:textSize="12sp"
-                    android:textColor="#666"/>
+                    android:textSize="13sp"
+                    android:textColor="#A99DA2"
+                    android:layout_marginTop="4dp" />
             </LinearLayout>
 
             <ImageView
                 android:src="@drawable/arrow"
-                android:layout_width="20dp"
-                android:layout_height="20dp"/>
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                app:tint="#C9B5BA" />
         </LinearLayout>
 
-        <!-- ABOUT -->
+        <!-- PRIVACY -->
         <LinearLayout
-            android:id="@+id/layoutAbout"
-            android:layout_marginTop="12dp"
+            android:id="@+id/layoutPrivacy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/settings_card"
+            android:background="@drawable/settings_dark_card"
             android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:src="@drawable/about"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+            android:padding="18dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
 
             <LinearLayout
-                android:layout_marginStart="16dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:background="@drawable/icon_green_bg">
+
+                <ImageView
+                    android:src="@drawable/lock"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:tint="#72FF9A" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="18dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -125,81 +157,115 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="About"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:text="Privacy &amp; Security"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFE7EA" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Protect your account"
+                    android:textSize="13sp"
+                    android:textColor="#A99DA2"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <ImageView
+                android:src="@drawable/arrow"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                app:tint="#C9B5BA" />
+        </LinearLayout>
+
+        <!-- ABOUT -->
+        <LinearLayout
+            android:id="@+id/layoutAbout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings_dark_card"
+            android:orientation="horizontal"
+            android:padding="18dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="22dp">
+
+            <LinearLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:background="@drawable/icon_white_bg">
+
+                <ImageView
+                    android:src="@drawable/about"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:tint="#FFD6D6"
+                    tools:ignore="UseAppTint" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="18dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="About App"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFE7EA" />
 
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="App version and details"
-                    android:textSize="12sp"
-                    android:textColor="#666"/>
+                    android:textSize="13sp"
+                    android:textColor="#A99DA2"
+                    android:layout_marginTop="4dp" />
             </LinearLayout>
 
             <ImageView
-
                 android:src="@drawable/arrow"
-                android:layout_width="20dp"
-                android:layout_height="20dp"/>
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                app:tint="#C9B5BA" />
         </LinearLayout>
 
-        <!-- DARK MODE -->
-        <LinearLayout
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/settings_card"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:src="@drawable/darkmode"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
-
-            <TextView
-                android:layout_marginStart="16dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Dark Mode"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <Switch
-                android:id="@+id/switchDarkMode"
-                tools:ignore="UseSwitchCompatOrMaterialXml"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-        </LinearLayout>
-
+        <!-- LOGOUT -->
         <LinearLayout
             android:id="@+id/layoutLogout"
-            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/settings_card"
+            android:background="@drawable/logout_card_bg"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="20dp"
             android:gravity="center_vertical">
 
-            <ImageView
-                android:src="@drawable/logout"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+            <LinearLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:background="@drawable/logout_icon_bg">
+
+                <ImageView
+                    android:src="@drawable/logout"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:tint="#FFD6D6" />
+            </LinearLayout>
 
             <TextView
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Logout"
-                android:textSize="16sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="#E53935"/>
+                android:textColor="#FFE7EA"/>
         </LinearLayout>
-
 
     </LinearLayout>
 </ScrollView>

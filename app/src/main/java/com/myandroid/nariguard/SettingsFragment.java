@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SettingsFragment extends Fragment {
 
     LinearLayout layoutProfile, layoutEmergency, layoutAbout, layoutLogout;
-    Switch switchDarkMode;
+
 
     @Nullable
     @Override
@@ -33,30 +33,10 @@ public class SettingsFragment extends Fragment {
         layoutEmergency = view.findViewById(R.id.layoutEmergency);
         layoutAbout = view.findViewById(R.id.layoutAbout);
         layoutLogout = view.findViewById(R.id.layoutLogout);
-        switchDarkMode = view.findViewById(R.id.switchDarkMode);
 
 
-        switchDarkMode.setOnCheckedChangeListener(null);
-        int nightMode = AppCompatDelegate.getDefaultNightMode();
-        switchDarkMode.setChecked(nightMode == AppCompatDelegate.MODE_NIGHT_YES);
 
 
-        switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
-            int newMode = isChecked
-                    ? AppCompatDelegate.MODE_NIGHT_YES
-                    : AppCompatDelegate.MODE_NIGHT_NO;
-
-            if (AppCompatDelegate.getDefaultNightMode() != newMode) {
-
-                AppCompatDelegate.setDefaultNightMode(newMode);
-
-
-                if (getActivity() != null) {
-                    getActivity().recreate();
-                }
-            }
-        });
 
 
         layoutProfile.setOnClickListener(v ->

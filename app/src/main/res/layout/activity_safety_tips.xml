@@ -3,18 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    android:background="#121212"
+    android:padding="20dp">
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🛡️ Safety Tips for Women"
-        android:textSize="22sp"
+        android:text="Safety Tips"
+        android:textColor="#FFE0E6"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="#C52BEA"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:paddingBottom="6dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Smart protection guidance for daily safety"
+        android:textColor="#8E7B80"
+        android:textSize="15sp"
+        android:paddingBottom="24dp"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSafetyTips"
@@ -22,5 +31,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingBottom="12dp"/>
+        android:paddingBottom="20dp"/>
+
 </LinearLayout>

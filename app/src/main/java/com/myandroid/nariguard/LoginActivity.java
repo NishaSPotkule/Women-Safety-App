@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText emailEt, passEt;
     Button loginBtn;
-    TextView signupText, forgotPassword;
+    TextView signupText;
 
     FirebaseAuth auth;
     FirebaseFirestore firestore;
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginBtn = findViewById(R.id.loginbtn);
         signupText = findViewById(R.id.signup);
-        forgotPassword = findViewById(R.id.forgotPassword);
+
 
         loginBtn.setOnClickListener(v -> loginUser());
 
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RegisterActivity.class))
         );
 
-        forgotPassword.setOnClickListener(v -> resetPassword());
+
     }
 
     private void loginUser() {
@@ -74,21 +74,4 @@ public class LoginActivity extends AppCompatActivity {
                 );
     }
 
-    private void resetPassword() {
-
-        String email = emailEt.getText().toString().trim();
-
-        if (TextUtils.isEmpty(email)) {
-            emailEt.setError("Enter registered email");
-            return;
-        }
-
-        auth.sendPasswordResetEmail(email)
-                .addOnSuccessListener(unused ->
-                        Toast.makeText(this, "Reset link sent", Toast.LENGTH_LONG).show()
-                )
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show()
-                );
-    }
 }

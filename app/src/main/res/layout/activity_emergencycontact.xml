@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/emergencyContactLayout"
+    android:background="#F7F7F9"
     tools:context=".EmergencycontactActivity">
+
+    <!-- TOP TOOLBAR -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/contactsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Contacts"
+        android:titleTextColor="@android:color/white"
+        app:titleCentered="true"
+        android:background="@drawable/topbar_gradient"
+        android:elevation="4dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewContacts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
         android:padding="8dp"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"/>
 
-
+    <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Add Contact"
         android:src="@drawable/add"
-        app:layout_anchorGravity="bottom|end"
+        android:tint="#FFFFFF"
         android:layout_margin="16dp"
-        android:backgroundTint="@null"
+        app:backgroundTint="#C52BEA"
         app:layout_anchor="@id/recyclerViewContacts"
-        android:background="@drawable/floating_btn_bg" />
-
+        app:layout_anchorGravity="bottom|end"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,6 +3,7 @@ package com.myandroid.nariguard;
 import java.util.List;
 
 public class SafetyModel {
+
     private String title;
     private List<String> tips;
 
@@ -11,6 +12,11 @@ public class SafetyModel {
         this.tips = tips;
     }
 
-    public String getTitle() { return title; }
-    public List<String> getTips() { return tips; }
+    public String getTitle() {
+        return title;
+    }
+
+    public List<String> getTips() {
+        return tips;
+    }
 }

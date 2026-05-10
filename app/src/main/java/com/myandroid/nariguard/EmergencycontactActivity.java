@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,6 +33,10 @@ public class EmergencycontactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergencycontact);
+
+        MaterialToolbar topAppBar = findViewById(R.id.contactsToolbar);
+        setSupportActionBar(topAppBar);
+        getSupportActionBar().setTitle("Contacts");
 
         recyclerView = findViewById(R.id.recyclerViewContacts);
         fabAddContact = findViewById(R.id.fabAddContact);

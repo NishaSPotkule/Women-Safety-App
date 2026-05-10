@@ -1,5 +1,7 @@
 package com.myandroid.nariguard;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,52 +21,56 @@ public class SafetyTipsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safety_tips);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#090204"));
+        }
+
         recyclerView = findViewById(R.id.recyclerSafetyTips);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         tipsList = new ArrayList<>();
 
-        // Add safety topics with multiple tips
-        tipsList.add(new SafetyModel("Be Alert", Arrays.asList(
-                "Stay aware of your surroundings at all times.",
-                "Avoid using headphones in unsafe areas.",
-                "Keep your phone handy for emergencies."
-        )));
+        tipsList.add(new SafetyModel("Safe Commuting Tips",
+                Arrays.asList("Stay in well-lit areas",
+                        "Avoid isolated roads",
+                        "Share live location",
+                        "Keep emergency contacts ready",
+                        "Avoid distractions while walking",
+                        "Use trusted transport services")));
 
-        tipsList.add(new SafetyModel("Use SOS Feature", Arrays.asList(
-                "Press the SOS button immediately if you feel unsafe.",
-                "Set up trusted contacts to receive alerts.",
-                "Check your GPS settings for accurate location."
-        )));
+        tipsList.add(new SafetyModel("Emergency Awareness",
+                Arrays.asList("Keep your phone charged",
+                        "Enable GPS always",
+                        "Use SOS immediately",
+                        "Memorize emergency numbers",
+                        "Stay calm during danger")));
 
-        tipsList.add(new SafetyModel("Travel Safety", Arrays.asList(
-                "Avoid isolated places.",
-                "Sit near the driver in public transport.",
-                "Share your route with family or friends."
-        )));
+        tipsList.add(new SafetyModel("Online Safety",
+                Arrays.asList("Never share OTPs",
+                        "Avoid suspicious links",
+                        "Use strong passwords",
+                        "Enable two-factor authentication",
+                        "Keep profiles private")));
 
-        tipsList.add(new SafetyModel("Emergency Contacts", Arrays.asList(
-                "Keep trusted contacts on speed dial.",
-                "Update contact list regularly.",
-                "Inform contacts about your daily routine."
-        )));
+        tipsList.add(new SafetyModel("Self Defense Tips",
+                Arrays.asList("Learn basic self defense",
+                        "Use loud voice for help",
+                        "Stay mentally prepared",
+                        "Target weak points if attacked",
+                        "Carry legal safety tools")));
 
-        tipsList.add(new SafetyModel("Online Safety", Arrays.asList(
-                "Never share OTPs or passwords.",
-                "Do not accept friend requests from strangers.",
-                "Use strong and unique passwords."
-        )));
+        tipsList.add(new SafetyModel("Travel Safety",
+                Arrays.asList("Inform family before travel",
+                        "Avoid solo late-night travel",
+                        "Use verified taxi services",
+                        "Keep ID proof available")));
 
-        tipsList.add(new SafetyModel("Trust Your Instincts", Arrays.asList(
-                "If something feels wrong, act immediately.",
-                "Avoid overthinking, prioritize safety."
-        )));
-
-        tipsList.add(new SafetyModel("Self-Defense Awareness", Arrays.asList(
-                "Learn basic self-defense techniques.",
-                "Stay calm and focused in danger.",
-                "Carry a small safety tool if allowed."
-        )));
+        tipsList.add(new SafetyModel("Public Safety",
+                Arrays.asList("Trust your instincts",
+                        "Stay aware of surroundings",
+                        "Avoid unsafe crowds",
+                        "Locate emergency exits",
+                        "Do not reveal personal information")));
 
         SafetyTipsAdapter adapter = new SafetyTipsAdapter(tipsList);
         recyclerView.setAdapter(adapter);

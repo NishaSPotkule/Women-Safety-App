@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -38,17 +40,22 @@ public class SafeLocationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safe_locations);
 
+        // ===== TOOLBAR =====
+        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
+        setSupportActionBar(topAppBar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Safe Locations");
+        }
+
         recyclerView = findViewById(R.id.rvSafeLocations);
-        progressBar=findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         userLat = getIntent().getDoubleExtra("lat", -1);
         userLon = getIntent().getDoubleExtra("lon", -1);
 
         Log.d("LOCATION_DEBUG", "Lat: " + userLat + " Lon: " + userLon);
-
 
         if (userLat == -1 || userLon == -1) {
             Toast.makeText(this, "Location unavailable. Please try again.", Toast.LENGTH_SHORT).show();
@@ -70,7 +77,9 @@ public class SafeLocationsActivity extends AppCompatActivity {
 
     private void fetchNearbySafeLocations(double lat, double lon) {
 
-        progressBar.setVisibility(View.VISIBLE);
+        runOnUiThread(() ->
+                progressBar.setVisibility(View.VISIBLE)
+        );
 
         new Thread(() -> {
 
@@ -117,7 +126,9 @@ public class SafeLocationsActivity extends AppCompatActivity {
                     Log.d("SafeLocationAPI", response.toString());
 
                     JSONObject json = new JSONObject(response.toString());
-                    JSONArray elements = json.getJSONArray("elements");
+                    JSONArray elements = json.optJSONArray("elements");
+
+                    if (elements == null) return;
 
                     tempList.clear();
 
@@ -134,7 +145,6 @@ public class SafeLocationsActivity extends AppCompatActivity {
                         String type = tags.optString("amenity", "unknown");
                         String name = tags.optString("name", "");
 
-                        // ✅ Better default names
                         if (name.isEmpty()) {
                             name = type.equals("police")
                                     ? "Police Station"
@@ -173,10 +183,13 @@ public class SafeLocationsActivity extends AppCompatActivity {
                                     "Failed to fetch safe locations",
                                     Toast.LENGTH_SHORT).show());
 
+                    runOnUiThread(() ->
+                            progressBar.setVisibility(View.GONE)
+                    );
+
                     return;
                 }
             }
-
 
             Collections.sort(tempList,
                     (a, b) -> Double.compare(a.distance, b.distance));
