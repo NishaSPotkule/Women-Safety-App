@@ -25,7 +25,7 @@ public class EmergencycontactActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private String userId;
 
-    // 🔥 CONSTANTS (BEST PRACTICE)
+
     private static final String USERS = "users";
     private static final String CONTACTS = "emergency_contacts";
 

@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- TOP TOOLBAR -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
@@ -15,14 +14,14 @@
         android:elevation="4dp"
         android:background="@drawable/topbar_gradient"/>
 
-    <!-- PROGRESS BAR -->
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <!-- LIST -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSafeLocations"
         android:layout_width="match_parent"
