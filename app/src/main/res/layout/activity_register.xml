@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- ICON -->
+
     <FrameLayout
         android:layout_width="110dp"
         android:layout_height="110dp"
@@ -21,10 +21,10 @@
             android:layout_height="55dp"
             android:layout_gravity="center"
             android:src="@drawable/shield"
-            android:tint="#FF4D6D"/>
+            app:tint="#FF4D6D" />
     </FrameLayout>
 
-    <!-- CARD -->
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- TITLE -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,22 +60,24 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="18dp"/>
 
-            <!-- FULL NAME -->
+
             <EditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Full Name"
+                android:textColorHint="@color/white"
                 android:padding="12dp"
                 android:textColor="#FFFFFF"
 
                 android:background="@drawable/input_bg"/>
 
-            <!-- EMAIL -->
+
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:textColorHint="@color/white"
                 android:layout_marginTop="12dp"
                 android:hint="Email Address"
                 android:padding="12dp"
@@ -83,12 +85,13 @@
 
                 android:background="@drawable/input_bg"/>
 
-            <!-- PASSWORD -->
+
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
+                android:textColorHint="@color/white"
                 android:hint="Password"
                 android:padding="12dp"
                 android:textColor="#FFFFFF"
@@ -102,6 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
+                android:textColorHint="@color/white"
                 android:hint="Phone Number"
                 android:padding="12dp"
                 android:textColor="#FFFFFF"
@@ -109,7 +113,7 @@
                 android:background="@drawable/input_bg"
                 android:inputType="phone"/>
 
-            <!-- REGISTER BUTTON -->
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/registerBtn"
                 android:layout_width="match_parent"
@@ -123,7 +127,7 @@
                 app:backgroundTint="@null"
                 app:cornerRadius="16dp"/>
 
-            <!-- LOGIN LINK -->
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

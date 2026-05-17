@@ -123,60 +123,6 @@
                 app:tint="#C9B5BA" />
         </LinearLayout>
 
-        <!-- PRIVACY -->
-        <LinearLayout
-            android:id="@+id/layoutPrivacy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/settings_dark_card"
-            android:orientation="horizontal"
-            android:padding="18dp"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="14dp">
-
-            <LinearLayout
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:gravity="center"
-                android:background="@drawable/icon_green_bg">
-
-                <ImageView
-                    android:src="@drawable/lock"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    app:tint="#72FF9A" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginStart="18dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Privacy &amp; Security"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="#FFE7EA" />
-
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Protect your account"
-                    android:textSize="13sp"
-                    android:textColor="#A99DA2"
-                    android:layout_marginTop="4dp" />
-            </LinearLayout>
-
-            <ImageView
-                android:src="@drawable/arrow"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                app:tint="#C9B5BA" />
-        </LinearLayout>
 
         <!-- ABOUT -->
         <LinearLayout
