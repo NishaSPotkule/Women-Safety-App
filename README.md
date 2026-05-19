@@ -44,8 +44,19 @@ Firebase Realtime Database / Firestore
 Osomdroid Map API
 Location Services
 XML for UI Design
+
 📱 Screenshots
 
+[splash](splash.jpeg)
+[Signup](signup.jpeg)
+[Login](login.jpeg)
+[Home](homeScreen1.jpeg)[](homescreen2.jpeg)
+[SafeLocations](safelocations.jpeg)
+[voiceRecorder](voicerecorder.jpeg)
+[Map](map.jpeg)
+[SafetyTips](safetytips.jpeg)
+[settings](setting.jpeg)
+[Contacts](contact.jpeg)
 
 ⚙ Installation
 
