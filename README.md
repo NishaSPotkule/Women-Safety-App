@@ -92,4 +92,4 @@ Wearable device
 👩‍💻 Developed By
 
 Nisha Potkule
-B.Tech Computer Science Engineering
+
