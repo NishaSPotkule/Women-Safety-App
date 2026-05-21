@@ -1,95 +1,184 @@
-NariGuard – Women Safety Application
-📌 Overview
+# NariGuard 🛡️
+### Smart Women Safety & Emergency Assistance Application
 
-NariGuard is an Android-based women safety application designed to provide quick emergency support, real-time safety tools, and awareness features for women. The app helps users stay connected with trusted contacts, share live location during emergencies, and access nearby emergency services.
+## 📌 Overview
 
-The main goal of NariGuard is to improve personal safety using smart mobile technology.
+**NariGuard** is an Android-based women safety application developed to provide instant emergency assistance, real-time location sharing, and quick access to essential safety services. The application empowers women with smart safety tools that help them stay connected with trusted contacts and seek immediate help during emergencies.
 
-✨ Features
+The primary objective of NariGuard is to enhance personal security through mobile technology by enabling rapid communication, location tracking, and access to emergency resources.
 
-🚨 SOS Emergency Alert
-Send emergency alerts instantly to saved emergency contacts.
-Share live location during emergency situations.
-One-tap SOS button for quick emergency access.
+---
 
-📍 Live Location Sharing
-Share current GPS location with trusted contacts.
-Helps family and friends track the user during emergencies.
+# ✨ Key Features
 
-🎙 Voice Recording
-Record surrounding audio during unsafe situations.
-Useful for safety evidence and emergency support.
+## 🚨 SOS Emergency Alert
+- One-tap SOS button for immediate emergency assistance
+- Instantly notify trusted emergency contacts
+- Share live location during emergencies
+- Quick access to emergency support when needed
 
-🏥 Nearby Emergency Services
-Find nearby:
-Hospitals
-Police Stations
+---
 
-Integrated map support for navigation.
-🗺 Interactive Maps
-Real-time map integration for location tracking.
-Easy navigation to nearby safety services.
+## 📍 Live Location Sharing
+- Real-time GPS location tracking
+- Share current location with trusted contacts
+- Enable family and friends to monitor user safety during emergencies
 
-📞 Emergency Contacts
-Save and manage trusted emergency contacts.
+---
 
-💡 Safety Tips
-Provides useful women safety tips and awareness guidance.
-Helps users learn preventive safety measures.
-🛠 Technologies Used
-Android Studio
-Java
-Firebase Authentication
-Firebase Realtime Database / Firestore
-Osomdroid Map API
-Location Services
-XML for UI Design
+## 🎙 Voice Recording
+- Record surrounding audio in unsafe situations
+- Store recordings securely for future reference
+- Useful for emergency evidence and safety documentation
 
-📱 Screenshots
+---
 
-[splash](splash.jpeg)
-[Signup](signup.jpeg)
-[Login](login.jpeg)
-[Home](homeScreen1.jpeg)[](homescreen2.jpeg)
-[SafeLocations](safelocations.jpeg)
-[voiceRecorder](voicerecorder.jpeg)
-[Map](map.jpeg)
-[SafetyTips](safetytips.jpeg)
-[settings](setting.jpeg)
-[Contacts](contact.jpeg)
+## 🏥 Nearby Emergency Services
+Quickly locate nearby:
+- Hospitals
+- Police Stations
+- Emergency Assistance Centers
 
-⚙ Installation
+Integrated map navigation helps users reach emergency services efficiently.
 
-Clone the repository:
-git clone https://github.com/your-NishaSPotkule/NariGuard.git
-Open the project in Android Studio.
-Sync Gradle files.
-Add your Firebase configuration file:
-google-services.json
-Run the application on an emulator or physical device.
+---
+
+## 🗺 Interactive Maps
+- Real-time location tracking
+- Nearby emergency service discovery
+- Navigation support for safer travel
+
+---
+
+## 📞 Emergency Contact Management
+- Add and manage trusted contacts
+- Update emergency contact information
+- Quickly communicate with selected contacts during emergencies
+
+---
+
+## 💡 Safety Tips & Awareness
+- Women safety awareness content
+- Preventive safety guidelines
+- Emergency preparedness recommendations
+- Personal security best practices
+
+---
+
+# 🔑 Permissions Used
+
+The application requires the following permissions:
+
+- Internet Access
+- Location Access
+- SMS Permission
+- Phone Call Permission
+- Audio Recording Permission
+- Notification Permission
+
+---
+
+# 🛠 Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Android Studio | Android Application Development |
+| Java | Application Logic |
+| XML | User Interface Design |
+| Firebase Authentication | User Authentication |
+| Firebase Realtime Database / Firestore | Cloud Data Storage |
+| OSMDroid Map API | Maps & Navigation |
+| GPS Location Services | Real-Time Location Tracking |
+
+---
+
+# 📱 Screenshots
+
+## Splash Screen
+![Splash Screen](splash.jpeg)
+
+## Sign Up Screen
+![Signup Screen](signup.jpeg)
+
+## Login Screen
+![Login Screen](login.jpeg)
+
+## Home Screen
+![Home Screen](homeScreen1.jpeg)
+
+## Home Dashboard
+![Home Dashboard](homescreen2.jpeg)
+
+## Safe Locations
+![Safe Locations](safelocations.jpeg)
+
+## Voice Recorder
+![Voice Recorder](voicerecorder.jpeg)
+
+## Map View
+![Map View](map.jpeg)
+
+## Safety Tips
+![Safety Tips](safetytips.jpeg)
+
+## Settings
+![Settings](setting.jpeg)
+
+## Emergency Contacts
+![Emergency Contacts](contact.jpeg)
+
+---
+
+# ⚙ Installation
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/your-username/NariGuard.git
+```
+
+## Setup Instructions
+
+1. Open the project in Android Studio
+2. Connect the project with Firebase
+3. Add the `google-services.json` file inside the `app/` directory
+4. Sync Gradle files
+5. Build and run the application on an Android emulator or physical device
+
+---
+
+# 🎯 Future Enhancements
+
+- AI-Based Danger Detection
+- Fake Call Emergency Feature
+- Shake-to-Alert Functionality
+- Offline Emergency Support
+- Multi-Language Support
+- Smartwatch & Wearable Device Integration
+- Real-Time Emergency Notifications
+- Voice-Activated SOS Commands
+
+---
+
+# 🤝 Contribution
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a new feature branch
+3. Commit your changes
+4. Push the branch
+5. Create a Pull Request
+
+---
+
+# 👩‍💻 Developer
+
+**Nisha Potkule**  
 
 
-🔑 Permissions Used
+---
 
-The application uses the following permissions:
+# ⭐ Support
 
-Internet Access
-Location Access
-SMS Permission
-Call Permission
-Audio Recording Permission
-Notification Permission
-
-🎯 Future Enhancements
-
-AI-based danger detection
-Fake call feature
-Shake-to-alert functionality
-Offline emergency mode
-Multi-language support
-Wearable device 
-
-👩‍💻 Developed By
-
-Nisha Potkule
-
+If you found this project useful, consider giving it a ⭐ on GitHub to support future development.
