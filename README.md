@@ -92,43 +92,6 @@ The application requires the following permissions:
 
 ---
 
-# 📱 Screenshots
-
-## Splash Screen
-![Splash Screen](splash.jpeg)
-
-## Sign Up Screen
-![Signup Screen](signup.jpeg)
-
-## Login Screen
-![Login Screen](login.jpeg)
-
-## Home Screen
-![Home Screen](homeScreen1.jpeg)
-
-## Home Dashboard
-![Home Dashboard](homescreen2.jpeg)
-
-## Safe Locations
-![Safe Locations](safelocations.jpeg)
-
-## Voice Recorder
-![Voice Recorder](voicerecorder.jpeg)
-
-## Map View
-![Map View](map.jpeg)
-
-## Safety Tips
-![Safety Tips](safetytips.jpeg)
-
-## Settings
-![Settings](setting.jpeg)
-
-## Emergency Contacts
-![Emergency Contacts](contact.jpeg)
-
----
-
 # ⚙ Installation
 
 ## Clone the Repository
